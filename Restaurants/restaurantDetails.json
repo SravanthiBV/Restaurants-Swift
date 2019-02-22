@@ -1,0 +1,28 @@
+{
+    "restaurants" : [
+        {
+            "name": "Absolute Barbecue",
+            "address":"90/4, Marathahalli Outer Ring Road, Near Park Plaza Hotel, Bengaluru",
+            "image":"http://www.simplifiedtechy.net/wp-content/uploads/2017/07/simplified-techy-default-65x65.png",
+            "pincode":"560037"
+        },
+        {
+            "name": "Zaitoon",
+            "address":"Maruthi Towers, 138, HAL Old Airport Rd, Opposite Leela Palace, Kodihalli, Bengaluru",
+            "image":"http://www.simplifiedtechy.net/wp-content/uploads/2017/11/HP-15-ay013nr-2-best-laptop-for-developers-65x65.jpg",
+            "pincode":"560008"
+        },
+        {
+            "name": "Barbecue Nation",
+            "address":"19 & 20, West Gate Mall Golden Heights, Rajajinagar Entrance, Dr Rajkumar Rd, Rajaji Nagar, Bengaluru",
+            "image":"http://www.simplifiedtechy.net/wp-content/uploads/2017/11/Aroma-File-Manager-Aroma-File-Manager-65x65.jpg",
+            "pincode":"560010"
+        },
+        {
+            "name": "Onesta",
+            "address":"First Floor, Gandhi Bazaar Main Rd, Basavanagudi, Bengaluru, Karnataka",
+            "image":"http://www.simplifiedtechy.net/wp-content/uploads/2017/11/Acer-Aspire-E5-573G-best-laptop-for-developers-65x65.jpg",
+            "pincode":"560062"
+        }
+    ]
+}
