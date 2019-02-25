@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3998C9EE2223CE7400439696 /* Default-375w-667h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3998C9EC2223CE7400439696 /* Default-375w-667h@2x~iphone.png */; };
+		3998C9EF2223CE7400439696 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3998C9ED2223CE7400439696 /* Default-568h@2x~iphone.png */; };
 		39A81B55221E8DB400F93D33 /* NetworkRequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A81B54221E8DB400F93D33 /* NetworkRequestDelegate.swift */; };
 		39A81B57221E909000F93D33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A81B56221E909000F93D33 /* NetworkManager.swift */; };
 		39ABA59C221D69CC00EEB6A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA59B221D69CC00EEB6A6 /* Restaurant.swift */; };
@@ -19,11 +21,12 @@
 		39F4389E221ABE0C00BCC5FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4389D221ABE0C00BCC5FA /* ViewController.swift */; };
 		39F438A1221ABE0C00BCC5FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39F4389F221ABE0C00BCC5FA /* Main.storyboard */; };
 		39F438A3221ABE1200BCC5FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39F438A2221ABE1200BCC5FA /* Assets.xcassets */; };
-		39F438A6221ABE1200BCC5FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39F438A4221ABE1200BCC5FA /* LaunchScreen.storyboard */; };
 		39F438AE221AD7C300BCC5FA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F438AD221AD7C300BCC5FA /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3998C9EC2223CE7400439696 /* Default-375w-667h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x~iphone.png"; sourceTree = "<group>"; };
+		3998C9ED2223CE7400439696 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		39A81B54221E8DB400F93D33 /* NetworkRequestDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestDelegate.swift; sourceTree = "<group>"; };
 		39A81B56221E909000F93D33 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		39ABA59B221D69CC00EEB6A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -37,7 +40,6 @@
 		39F4389D221ABE0C00BCC5FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		39F438A0221ABE0C00BCC5FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		39F438A2221ABE1200BCC5FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		39F438A5221ABE1200BCC5FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39F438A7221ABE1200BCC5FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39F438AD221AD7C300BCC5FA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,12 +118,13 @@
 		39F4389A221ABE0C00BCC5FA /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
+				3998C9EC2223CE7400439696 /* Default-375w-667h@2x~iphone.png */,
+				3998C9ED2223CE7400439696 /* Default-568h@2x~iphone.png */,
 				39AC557A22202D4600E63794 /* restaurantDetails.json */,
 				39AC557922201D4400E63794 /* Controller */,
 				39F4389B221ABE0C00BCC5FA /* AppDelegate.swift */,
 				39F4389F221ABE0C00BCC5FA /* Main.storyboard */,
 				39F438A2221ABE1200BCC5FA /* Assets.xcassets */,
-				39F438A4221ABE1200BCC5FA /* LaunchScreen.storyboard */,
 				39F438A7221ABE1200BCC5FA /* Info.plist */,
 				39AC5576222001C200E63794 /* DataSource */,
 				39A81B53221E8DB400F93D33 /* Networking */,
@@ -189,8 +192,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39F438A6221ABE1200BCC5FA /* LaunchScreen.storyboard in Resources */,
 				39AC557B22202D4600E63794 /* restaurantDetails.json in Resources */,
+				3998C9EF2223CE7400439696 /* Default-568h@2x~iphone.png in Resources */,
+				3998C9EE2223CE7400439696 /* Default-375w-667h@2x~iphone.png in Resources */,
 				39F438A3221ABE1200BCC5FA /* Assets.xcassets in Resources */,
 				39F438A1221ABE0C00BCC5FA /* Main.storyboard in Resources */,
 			);
@@ -225,14 +229,6 @@
 				39F438A0221ABE0C00BCC5FA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		39F438A4221ABE1200BCC5FA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39F438A5221ABE1200BCC5FA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
