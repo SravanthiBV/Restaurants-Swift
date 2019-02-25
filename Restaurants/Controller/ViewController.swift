@@ -14,6 +14,8 @@ enum TableCell :String{
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var restaurantsTableView: UITableView!
     let dataManager = RestaurantManager(withDataSource: RestaurantDataSource())
     var restaurantItems : [RestaurantItem]?
@@ -22,7 +24,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        
         setUpViewController()
     }
     
@@ -38,7 +39,9 @@ class ViewController: UIViewController {
     
     func createRefreshControl(){
         self.restaurantsTableView.refreshControl = UIRefreshControl()
+        self.restaurantsTableView.refreshControl?.tintColor = UIColor.white
         self.restaurantsTableView.refreshControl?.addTarget(self, action: #selector(refreshControlAction), for: UIControl.Event.valueChanged)
+        activityIndicator.startAnimating()
     }
     
     @objc func refreshControlAction(){
@@ -48,7 +51,6 @@ class ViewController: UIViewController {
     
     @objc func dismissRefreshControl(){
         self.restaurantsTableView.refreshControl?.endRefreshing()
-        self.restaurantsTableView.refreshControl?.backgroundColor = UIColor.white
     }
     
     func loadTable() {
@@ -56,6 +58,8 @@ class ViewController: UIViewController {
             [weak self] (restaurantData) in
             self?.restaurantItems = restaurantData
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.hidesWhenStopped = true
                 self?.restaurantsTableView.reloadData()
             }
         }
@@ -94,6 +98,7 @@ extension ViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailControllerId") as! DetailsViewController
+        dismissRefreshControl()
         detailViewController.restaurantItemDetals = restaurantItems?[indexPath.row] ?? nil
         self.navigationController?.pushViewController(detailViewController, animated: true)
         tableView .deselectRow(at: indexPath, animated: false)

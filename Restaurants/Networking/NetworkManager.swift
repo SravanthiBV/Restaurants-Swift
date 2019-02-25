@@ -32,6 +32,7 @@ class NetworkManager: NetworkRequestDelegate {
 //                let image = UIImage(data: contents)
 //                print(image)
 //            }
+            print("REACHED DESTINATION")
             onCompletion?(data,urlString)
         }
         imageFromUrl.resume()

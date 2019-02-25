@@ -67,16 +67,18 @@ class RestaurantDataSource {
                 print("index request \(index)")
                // let semaphore = DispatchSemaphore(value: 1)
                 //semaphore.wait()
-                networkDelegate.makeRequest(urlString: requestPath){
-                    [weak self] (responseData,request) in
-                    print("index before \(index)")
-                    self?.downloadedImageData[requestPath] = responseData
-                    //self?.downloadedImageData.updateValue(responseData, forKey: request)
-                    print("requestPath is \(requestPath) and data \(responseData)")
-                    //print("responseData is \(responseData)")
-                    print("index after \(index)")
-                    dispatchGroup.leave()
-                    //semaphore.signal()
+                DispatchQueue.global(qos:.utility).async {
+                    networkDelegate.makeRequest(urlString: requestPath){
+                        [weak self] (responseData,request) in
+                        print("index before \(index)")
+                        self?.downloadedImageData[requestPath] = responseData
+                        //self?.downloadedImageData.updateValue(responseData, forKey: request)
+                        print("requestPath is \(requestPath) and data \(responseData)")
+                        //print("responseData is \(responseData)")
+                        print("index after \(index)")
+                        dispatchGroup.leave()
+                        //semaphore.signal()
+                    }
                 }
             }
         }
@@ -85,9 +87,8 @@ class RestaurantDataSource {
         dispatchGroup.notify(queue: DispatchQueue.global()){
             [weak self] in
             self?.updateImageData()
-            //let restaurantArray = self?.restaurantData
-            onCompletion(self?.restaurantData ?? [])
             print("completed downloading all the images")
+            onCompletion(self?.restaurantData ?? [])
         }
     }
     
