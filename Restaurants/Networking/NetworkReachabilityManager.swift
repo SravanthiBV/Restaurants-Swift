@@ -11,7 +11,10 @@ import UIKit
 class NetworkReachabilityManager : NSObject{
     
     let reachability = Reachability.forInternetConnection()
-    static let sharedInstance :NetworkReachabilityManager = {return NetworkReachabilityManager()}()
+    static let sharedInstance :NetworkReachabilityManager = {
+        return NetworkReachabilityManager()
+        
+    }()
     
     override init() {
         super.init()

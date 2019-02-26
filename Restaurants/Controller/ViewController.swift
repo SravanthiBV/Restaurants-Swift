@@ -84,6 +84,10 @@ extension ViewController : UITableViewDataSource {
                 print("Restuaurant name is \(imageData)")
                 cell?.imageView?.image = UIImage(data: imageData)
             }
+            else{
+                let defaultImage = UIImage(named:"restaurant.png")
+                cell?.imageView?.image = defaultImage
+            }
         }
         
         cell?.detailTextLabel?.text = "Detail"
