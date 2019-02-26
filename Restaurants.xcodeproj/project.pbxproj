@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3998C9EE2223CE7400439696 /* Default-375w-667h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3998C9EC2223CE7400439696 /* Default-375w-667h@2x~iphone.png */; };
 		3998C9EF2223CE7400439696 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3998C9ED2223CE7400439696 /* Default-568h@2x~iphone.png */; };
+		3998C9FA2223EB3500439696 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3998C9F92223EB3500439696 /* Reachability.m */; };
+		3998C9FC2223F04800439696 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3998C9FB2223F04800439696 /* SystemConfiguration.framework */; };
+		3998C9FE222420FC00439696 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3998C9FD222420FC00439696 /* NetworkReachabilityManager.swift */; };
 		39A81B55221E8DB400F93D33 /* NetworkRequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A81B54221E8DB400F93D33 /* NetworkRequestDelegate.swift */; };
 		39A81B57221E909000F93D33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A81B56221E909000F93D33 /* NetworkManager.swift */; };
 		39ABA59C221D69CC00EEB6A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA59B221D69CC00EEB6A6 /* Restaurant.swift */; };
@@ -27,6 +30,11 @@
 /* Begin PBXFileReference section */
 		3998C9EC2223CE7400439696 /* Default-375w-667h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x~iphone.png"; sourceTree = "<group>"; };
 		3998C9ED2223CE7400439696 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		3998C9F72223EB1200439696 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3998C9F82223EB3400439696 /* Restaurants-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants-Bridging-Header.h"; sourceTree = "<group>"; };
+		3998C9F92223EB3500439696 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		3998C9FB2223F04800439696 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3998C9FD222420FC00439696 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		39A81B54221E8DB400F93D33 /* NetworkRequestDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestDelegate.swift; sourceTree = "<group>"; };
 		39A81B56221E909000F93D33 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		39ABA59B221D69CC00EEB6A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -49,17 +57,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3998C9FC2223F04800439696 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3998C9F22223DECD00439696 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3998C9FB2223F04800439696 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		39A81B53221E8DB400F93D33 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				3998C9F92223EB3500439696 /* Reachability.m */,
+				3998C9F72223EB1200439696 /* Reachability.h */,
 				39A81B54221E8DB400F93D33 /* NetworkRequestDelegate.swift */,
 				39A81B56221E909000F93D33 /* NetworkManager.swift */,
+				3998C9FD222420FC00439696 /* NetworkReachabilityManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -104,6 +124,7 @@
 			children = (
 				39F4389A221ABE0C00BCC5FA /* Restaurants */,
 				39F43899221ABE0C00BCC5FA /* Products */,
+				3998C9F22223DECD00439696 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +151,7 @@
 				39A81B53221E8DB400F93D33 /* Networking */,
 				39AC5571221FE97300E63794 /* Manager */,
 				39ABA59A221D69CC00EEB6A6 /* Model */,
+				3998C9F82223EB3400439696 /* Restaurants-Bridging-Header.h */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -166,6 +188,7 @@
 				TargetAttributes = {
 					39F43897221ABE0C00BCC5FA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -210,12 +233,14 @@
 				39AC5573221FE9EB00E63794 /* RestaurantDelegate.swift in Sources */,
 				39F4389E221ABE0C00BCC5FA /* ViewController.swift in Sources */,
 				39A81B55221E8DB400F93D33 /* NetworkRequestDelegate.swift in Sources */,
+				3998C9FA2223EB3500439696 /* Reachability.m in Sources */,
 				39AC5570221FD58B00E63794 /* RestaurantIem.swift in Sources */,
 				39F4389C221ABE0C00BCC5FA /* AppDelegate.swift in Sources */,
 				39AC5578222001C200E63794 /* RestaurantDataSource.swift in Sources */,
 				39A81B57221E909000F93D33 /* NetworkManager.swift in Sources */,
 				39AC5575221FEA0100E63794 /* RestaurantManager.swift in Sources */,
 				39ABA59C221D69CC00EEB6A6 /* Restaurant.swift in Sources */,
+				3998C9FE222420FC00439696 /* NetworkReachabilityManager.swift in Sources */,
 				39F438AE221AD7C300BCC5FA /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +379,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Restaurants/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -362,6 +392,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Quest.Restaurants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Restaurants/Restaurants-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,7 +403,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Restaurants/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -379,6 +416,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Quest.Restaurants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Restaurants/Restaurants-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

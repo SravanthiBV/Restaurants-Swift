@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     func loadTable() {
         dataManager.getRestaurantIems()  {
             [weak self] (restaurantData) in
+            print("Got my callback in loadTable()")
             self?.restaurantItems = restaurantData
             DispatchQueue.main.async {
                 self?.activityIndicator.stopAnimating()
