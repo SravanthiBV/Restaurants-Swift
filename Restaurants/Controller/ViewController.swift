@@ -12,6 +12,8 @@ enum TableCell :String{
     case cellId = "ItemDetailsCell"
 }
 
+let noNetWorkViewTag = 50234
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -25,16 +27,37 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         setUpViewController()
+        setNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
+    func setNotifications(){
+        NotificationCenter.default.addObserver(self, selector:#selector(self.networkChangedNotification), name:NSNotification.Name(rawValue: networkChangedNotificationID)  , object: nil)
+    }
+    
+    @objc func networkChangedNotification( ){
+        showControllerUiBasedOnNetwork()
+    }
+    
+    func showControllerUiBasedOnNetwork(){
+        if NetworkReachabilityManager.sharedInstance.isNetworkReachable(){
+            removeNoNetworkView()
+            hideComponents(hide: false)
+        }
+        else {
+            hideComponents(hide: true)
+            createNoNetworkView()
+        }
+    }
+    
     func setUpViewController(){
         self.title = "Restaurants"
         loadTable()
         createRefreshControl()
+        showControllerUiBasedOnNetwork()
     }
     
     func createRefreshControl(){
@@ -55,7 +78,8 @@ class ViewController: UIViewController {
     
     func loadTable() {
         dataManager.getRestaurantIems()  {
-            [weak self] (restaurantData) in
+            [weak self]
+            (restaurantData) in
             print("Got my callback in loadTable()")
             self?.restaurantItems = restaurantData
             DispatchQueue.main.async {
@@ -65,7 +89,59 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func createNoNetworkView(){
+        let messageView = self.view.viewWithTag(noNetWorkViewTag)
+        var noNetworkView : UIView
+        if messageView != nil {
+            noNetworkView = messageView!
+        }
+        else {
+            noNetworkView = UIView()
+            noNetworkView.tag = noNetWorkViewTag
+            noNetworkView.backgroundColor = UIColor.black
+            self.view.addSubview(noNetworkView)
+        }
+        noNetworkView.frame = CGRect.init(x: self.restaurantsTableView.frame.origin.x, y: self.restaurantsTableView.frame.origin.y, width: self.restaurantsTableView.frame.size.width, height: self.restaurantsTableView.frame.size.height)
+        
+        let messageLabel = UILabel()
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.text = "No network. Make sure that your device is connected to a Wi-Fi or cellular network."
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = UIColor.white
+        noNetworkView.addSubview(messageLabel)
+        
+        let horizontalPos = NSLayoutConstraint(item: messageLabel, attribute: NSLayoutConstraint.Attribute.centerX , relatedBy:NSLayoutConstraint.Relation.equal , toItem: noNetworkView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1.0, constant: 0)
+        
+        let verticalPos = messageLabel.centerYAnchor.constraint(equalTo: noNetworkView.centerYAnchor)
+        
+        let leadingConstarint = messageLabel.leadingAnchor.constraint(equalTo: noNetworkView.leadingAnchor, constant: 20)
+        
+        let trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: noNetworkView.trailingAnchor, constant: -20)
+        
+        noNetworkView.addConstraints([horizontalPos])
+        noNetworkView.addConstraints([verticalPos])
+        noNetworkView.addConstraints([leadingConstarint])
+        noNetworkView.addConstraints([trailingConstraint])
+    }
+    
+    func removeNoNetworkView() {
+        if let noNetworkView = self.view.viewWithTag(noNetWorkViewTag) {
+            noNetworkView.removeFromSuperview()
+        }
+    }
+    
+    func hideComponents(hide:Bool){
+        self.restaurantsTableView.isHidden = hide
+    }
+    
+    func showNoNetworkAlert(){
+        let alert = UIAlertController(title:"No network.", message: "Make sure that your device is connected to a Wi-Fi or cellular network.", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
+
 
 extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

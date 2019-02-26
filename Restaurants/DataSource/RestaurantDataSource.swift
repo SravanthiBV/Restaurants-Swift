@@ -72,7 +72,9 @@ class RestaurantDataSource {
                         print("index before \(index)")
                         if responseData != nil {
                             print("check crash \(responseData)")
-                            self?.downloadedImageData[requestPath] = responseData
+                            if let data = responseData as? Data {
+                                self?.downloadedImageData[requestPath] = data
+                            }
                         }
                         print("requestPath is \(requestPath) and data \(responseData)")
                         //print("responseData is \(responseData)")

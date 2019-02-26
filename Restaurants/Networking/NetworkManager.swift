@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class NetworkManager: NetworkRequestDelegate {
-    func makeRequest(urlString : String, onCompletion: ((_:Data?,_:String) -> ())?){
+    func makeRequest(urlString : String, onCompletion: ((_:Any?,_:String) -> ())?){
         
         guard
             let url = URL(string: urlString)
@@ -33,7 +33,8 @@ class NetworkManager: NetworkRequestDelegate {
 //                print(image)
 //            }
             print("REACHED DESTINATION")
-            onCompletion?(data,urlString)
+            let result : Any = error ?? data!
+            onCompletion?(result,urlString)
         }
         imageFromUrl.resume()
     }

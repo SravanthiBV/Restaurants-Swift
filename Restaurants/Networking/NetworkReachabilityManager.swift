@@ -8,6 +8,8 @@
 
 import UIKit
 
+let networkChangedNotificationID = "networkChangedNotificationID"
+
 class NetworkReachabilityManager : NSObject{
     
     let reachability = Reachability.forInternetConnection()
@@ -49,6 +51,6 @@ class NetworkReachabilityManager : NSObject{
     }
     
     @objc func reachabilityChanged(notification: NSNotification){
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: networkChangedNotificationID), object: nil)
     }
 }

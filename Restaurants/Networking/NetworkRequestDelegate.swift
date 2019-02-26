@@ -9,5 +9,5 @@
 import UIKit
 
 protocol NetworkRequestDelegate {
-    func makeRequest(urlString : String, onCompletion: ((Data?,String) -> ())?)
+    func makeRequest(urlString : String, onCompletion: ((Any?,String) -> ())?)
 }
