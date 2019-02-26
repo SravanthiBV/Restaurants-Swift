@@ -56,40 +56,47 @@ class RestaurantDataSource {
             
         }
         let networkDelegate : NetworkRequestDelegate = NetworkManager()
-        let dispatchGroup = DispatchGroup()
+        //let dispatchGroup = DispatchGroup()
         
         readJsonData()
         
+        let count = restaurantData.count
         for ( index,restaurant) in self.restaurantData.enumerated(){
             if let requestPath = restaurant.imagePath {
                 
-                dispatchGroup.enter()
+                //dispatchGroup.enter()
                 print("index request \(index)")
-               // let semaphore = DispatchSemaphore(value: 1)
-                //semaphore.wait()
                 DispatchQueue.global(qos:.utility).async {
                     networkDelegate.makeRequest(urlString: requestPath){
                         [weak self] (responseData,request) in
                         print("index before \(index)")
-                        self?.downloadedImageData[requestPath] = responseData
-                        //self?.downloadedImageData.updateValue(responseData, forKey: request)
+                        if responseData != nil {
+                            print("check crash \(responseData)")
+                            self?.downloadedImageData[requestPath] = responseData
+                        }
                         print("requestPath is \(requestPath) and data \(responseData)")
                         //print("responseData is \(responseData)")
                         print("index after \(index)")
-                        dispatchGroup.leave()
-                        //semaphore.signal()
+                        //dispatchGroup.leave()
+                        if index == (count - 1) {
+                            self?.updateImageData()
+                            onCompletion(self?.restaurantData ?? [])
+                        }
                     }
                 }
             }
         }
         
-        
-        dispatchGroup.notify(queue: DispatchQueue.global()){
-            [weak self] in
-            self?.updateImageData()
-            print("completed downloading all the images")
-            onCompletion(self?.restaurantData ?? [])
-        }
+        //dispatchGroup.wait()
+        updateImageData()
+        print(onCompletion)
+        onCompletion(restaurantData)
+//        dispatchGroup.notify(queue: DispatchQueue.global()){
+//            [weak self] in
+//            self?.updateImageData()
+//            print("completed downloading all the images")
+//            onCompletion(self?.restaurantData ?? [])
+//        }
     }
     
     func updateImageData(){
